@@ -10,12 +10,8 @@ sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 sudo touch /data/web_static/releases/test/index.html
 sudo echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html
-if [ -f "$f" ]; then
-sudo rm -rf /data/web_static/current/*
-sudo ln -s /data/web_static/releases/test/ /data/web_static/current
-else 
-sudo ln -s /data/web_static/releases/test/ /data/web_static/current
-fi
+sudo ln -sf  /data/web_static/releases/test/ /data/web_static/current
+sudo chown -hR ubuntu:ubuntu /data/
 sudo printf %s "server {
         listen 80 default_server;
         error_page 404 /404.html;
