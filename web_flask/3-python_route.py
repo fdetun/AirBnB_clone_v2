@@ -24,12 +24,16 @@ if __name__ == "__main__":
         """
         return "C " + f.replace("_", " ")
 
+    @app.route("/python", strict_slashes=False)
     @app.route("/python/<string:f>", strict_slashes=False)
-    def cisfun(f):
+    def pythondisplay(f=None):
         """
         the python directory displaying
         replacing "_" by " "
         """
-        return "Python " + f.replace("_", " ")
+        if f is None:
+            return "Python is cool"
+        else:
+            return "Python " + f.replace("_", " ")
 
     app.run(host="0.0.0.0", port=5000)
