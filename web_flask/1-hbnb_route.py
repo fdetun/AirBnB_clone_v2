@@ -14,5 +14,5 @@ if __name__ == "__main__":
     @app.route("/hbnb", strict_slashes=False)
     def hbnb():
         """home function"""
-        return "HBNB!"
+        return "HBNB"
     app.run(host="0.0.0.0", port=5000)
