@@ -50,6 +50,6 @@ if __name__ == "__main__":
         the c directory displaying
         replacing "_" by " "
         """
-        return render_template("5-number.html", n=n)
+        return render_template("5-number.html", n=f)
 
     app.run(host="0.0.0.0", port=5000)
