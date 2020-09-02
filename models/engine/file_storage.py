@@ -64,5 +64,6 @@ class FileStorage:
                 del self.__objects[key]
     
     def close(self):
+        """close methode"""
         self.reload()
 
