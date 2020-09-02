@@ -23,10 +23,10 @@ class BaseModel:
         self.updated_at = datetime.now()
         if kwargs:
             for i, j in kwargs.items():
+                if i == "created_at" or i == "updated_at":
+                    j = datetime.strptime(kwargs['updated_at'], '\
+                    %Y-%m-%dT%H:%M:%S.%f')
                 if i != "__class__":
-                    if i == "created_at" or i == "updated_at":
-                        j = datetime.strptime(kwargs['updated_at'], '\
-                        %Y-%m-%dT%H:%M:%S.%f')
                     setattr(self, i, j)
 
     def __str__(self):
@@ -55,4 +55,5 @@ class BaseModel:
 
     def delete(self):
         """delete the current instance from the storage"""
-        models.storage.delete(self)
+        from models import storage
+        storage.delete(self)
