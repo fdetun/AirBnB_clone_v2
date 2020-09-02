@@ -16,12 +16,11 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete")
 
-    if getenv("HBNB_TYPE_STORAGE") != 'db':
-        @property
-        def cities(self):
-            """getter to list all cities"""
-            cities = []
-            for city in models.storage.all(City).values():
-                if city.state_id == self.id:
-                    cities.append(city)
-            return cities
+    @property
+    def cities(self):
+        """getter to list all cities"""
+        cities = []
+        for city in models.storage.all(City).values():
+            if city.state_id == self.id:
+                cities.append(city)
+        return cities
